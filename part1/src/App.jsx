@@ -1,6 +1,6 @@
-const Hello = (props) => {
+const Hello = ({ name, age }) => {
   console.log(props);
-  const { name, age } = props;
+
   const bornYear = () => new Date().getFullYear() - age;
 
   return (
