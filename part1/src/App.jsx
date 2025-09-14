@@ -15,6 +15,9 @@ const App = () => {
       <button onClick={handleClick}>
         plus
       </button>
+      <button onClick={() => { setCounter(0); console.log('Counter reset.'); }}> 
+        zero
+      </button>
     </div>
   )
 }
