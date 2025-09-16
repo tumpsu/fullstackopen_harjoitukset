@@ -6,25 +6,37 @@ const Display = (props) => {
   )
 }
 
+const Button = (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
+}
+
 const App = () => {
   const [ counter, setCounter ] = useState(0);
 
+  const increaseByOne = () => setCounter(counter + 1);
+  const decreaseByOne = () => setCounter(counter - 1);
+  const setToZero = () => setCounter(0);
 
-  const handleClick = () => {
-    setCounter(counter + 1);
-    console.log('clicked, counter is ' + counter);
-  }
-
+  
   return (
     <div>
         <Display counter={counter}/>
-
-      <button onClick={handleClick}>
-        plus
-      </button>
-      <button onClick={() => { setCounter(0); console.log('Counter reset.'); }}> 
-        zero
-      </button>
+        <Button
+        onClick={increaseByOne}
+        text='plus'
+      />
+      <Button
+        onClick={setToZero}
+        text='zero'
+      />     
+      <Button
+        onClick={decreaseByOne}
+        text='minus'
+      />
     </div>
   )
 }
