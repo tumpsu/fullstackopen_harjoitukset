@@ -20,18 +20,18 @@ const App = () => {
 
   const handleLeftClick = () => {
     const newClicks = { 
-      left: clicks.left + 1, 
-      right: clicks.right 
+      ...clicks, 
+      left: clicks.left + 1 
     }
-    setClicks(newClicks);
+    setClicks(newClicks)
   }
-
+  
   const handleRightClick = () => {
     const newClicks = { 
-      left: clicks.left, 
+      ...clicks, 
       right: clicks.right + 1 
     }
-    setClicks(newClicks);
+    setClicks(newClicks)
   }
 
   return (
