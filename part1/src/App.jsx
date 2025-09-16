@@ -1,4 +1,11 @@
 import { useState } from 'react';
+
+const Display = (props) => {
+  return (
+    <div>{props.counter}</div>
+  )
+}
+
 const App = () => {
   const [ counter, setCounter ] = useState(0);
 
@@ -10,7 +17,7 @@ const App = () => {
 
   return (
     <div>
-      <div>{counter}</div>
+        <Display counter={counter}/>
 
       <button onClick={handleClick}>
         plus
