@@ -6,9 +6,7 @@ const App = (props) => {
   return (
     <div>
       {value}
-      <button onClick={() => console.log('clicked the button')}>
-  button
-</button>Added debug to click.
+      <button onClick={() => setValue(0)}>button</button>
     </div>
   )
 }
