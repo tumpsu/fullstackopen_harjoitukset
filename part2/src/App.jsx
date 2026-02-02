@@ -1,3 +1,9 @@
+const Note = ({ note }) => {
+  return (
+    <li>{note.content}</li>
+  )
+}
+
 const App = ({notes}) => {
 
   const result = notes.map(note => note.id)
@@ -8,9 +14,7 @@ const App = ({notes}) => {
       <h1>Notes</h1>
       <ul>
         {notes.map(note => 
-          <li key={note.id}>
-            {note.content}
-          </li>
+          <Note key={note.id} note={note} />
         )
         }
       </ul>
