@@ -1,6 +1,9 @@
 const App = (props) => {
   const { notes } = props
 
+  const result = notes.map(note => note.id)
+  console.log(result)
+
   return (
     <div>
       <h1>Notes</h1>
