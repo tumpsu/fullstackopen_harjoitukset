@@ -1,5 +1,5 @@
 
-import Note from './components/Note'
+import Note from './components/note'
 const App = ({notes}) => {
 
   const result = notes.map(note => note.id)
