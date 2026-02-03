@@ -2,8 +2,8 @@
 import Note from './components/note'
 const App = ({notes}) => {
 
-  const result = notes.map(note => note.id)
-  console.log(result)
+  const result = notes.map(note => note.id);
+  console.log(result);
 
   return (
     <div>
