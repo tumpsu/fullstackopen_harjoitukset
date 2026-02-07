@@ -30,8 +30,30 @@ app.get('/api/notes', (request, response) => {
 app.get('/api/notes/:id', (request, response) => {
   const id = request.params.id;
   const note = notes.find(note => note.id === id);
+  if (note) 
+  {
+    response.json(note);
+  } 
+  else 
+  {
+    response.status(404).end();
+  }
   response.json(note);
-})
+});
+
+app.delete('/api/notes/:id', (request, response) => {
+  const id = request.params.id;
+  const note = notes.find(note => note.id === id);
+  if (note) 
+  {
+    notes = notes.filter(note => note.id !== id);
+    response.status(204).end();
+  }
+  else
+  {
+    response.status(404).end();
+  }
+});
 
 const PORT = 3001;
 app.listen(PORT, () => {
