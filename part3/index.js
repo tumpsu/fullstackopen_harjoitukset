@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+app.use(express.json()); // Use json parser
 
 let notes = [
   {
@@ -24,7 +24,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/notes', (request, response) => {
-  response.json(notes)
+  response.json(notes);
 });
 
 app.get('/api/notes/:id', (request, response) => {
@@ -53,6 +53,38 @@ app.delete('/api/notes/:id', (request, response) => {
   {
     response.status(404).end();
   }
+});
+
+const generateId = () => {
+  const maxId = notes.length > 0
+    ? Math.max(...notes.map(n => Number(n.id)))
+    : 0;
+  return String(maxId + 1);
+}
+
+app.post('/api/notes', (request, response) => {
+  const body = request.body;
+
+  if (!body.content) 
+    {
+    return response.status(400).json({ 
+      error: 'content missing' 
+    });
+  }
+
+  const note = {
+    content: body.content,
+    important: body.important || false,
+    id: generateId(),
+  };
+  notes = notes.concat(note);
+// Luo resurssin URL 
+const resourceUrl = `/api/notes/${note.id}`; // Palautetaan 201 + Location-header 
+response 
+.status(201) 
+.location(resourceUrl) 
+.json(note)
+.end();
 });
 
 const PORT = 3001;
